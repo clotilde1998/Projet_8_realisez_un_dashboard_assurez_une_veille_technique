@@ -30,11 +30,6 @@ data_train_scaled = data_train.copy()
 
 explainer = shap.TreeExplainer(model['model'])
 
-def speak(text):
-    engine = pyttsx3.init()
-    engine.say(text)
-    engine.runAndWait()
-
 # === INTERFACE UTILISATEUR ===
 st.sidebar.header("Sélection du client")
 client_id = st.sidebar.selectbox("Choisissez un client:", data['SK_ID_CURR'])
