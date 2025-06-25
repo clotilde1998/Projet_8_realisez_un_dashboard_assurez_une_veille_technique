@@ -6,6 +6,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import re
 import os
+import pyttsx3
+
 
 # === CHARGEMENT DU MODÈLE & DONNÉES ===
 model = joblib.load('pipeline_complete.pkl')
