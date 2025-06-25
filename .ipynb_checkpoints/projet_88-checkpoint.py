@@ -5,8 +5,6 @@ import shap
 import matplotlib.pyplot as plt
 import seaborn as sns
 import re
-import pyttsx3
-from gtts import gTTS
 import os
 
 # === CHARGEMENT DU MODÈLE & DONNÉES ===
@@ -57,13 +55,7 @@ if client_id in data['SK_ID_CURR'].values:
     st.markdown(f"<h3 style='color:{decision_color};'>Décision: {decision} ({prediction:.2%})</h3>", unsafe_allow_html=True)
 
     # Ajout de l'audio description
-    if st.button("🔊 Écouter l'explication"):
-        text_to_read = f"Le client {client_id} a une probabilité de défaut de {prediction:.2%}. La décision de crédit est : {decision}."
-        speak(text_to_read)
-        tts = gTTS(text=text_to_read, lang='fr')
-        tts.save("audio_desc.mp3")
-        st.audio("audio_desc.mp3", format="audio/mp3")
-
+    
     # Explication SHAP Globale
     st.subheader("Explication Globale (SHAP)")
     shap_vals_global = explainer.shap_values(data_scaled.drop('SK_ID_CURR', axis=1))
